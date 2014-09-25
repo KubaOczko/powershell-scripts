@@ -11,9 +11,8 @@ $aspNetTempFolders = Get-ChildItem -Path $netRoot -Directory -Filter 'Temporary 
 # Delete all data in temp folders
 foreach ($path in $aspNetTempFolders.FullName)
 {
-    Write-Host Deleting temp folder data: $path
-    $path = $path + "\*"
-    Remove-Item -Path $path -Recurse 
+    $path += "\*"
+    Remove-Item -Path $path -Recurse -Force
 }
 
 # Start IIS service
